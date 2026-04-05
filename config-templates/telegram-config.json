@@ -1,0 +1,6 @@
+{
+  "allowed_users": [
+    YOUR_TELEGRAM_USER_ID_HERE
+  ],
+  "bot_name": "YourBotNameHere"
+}

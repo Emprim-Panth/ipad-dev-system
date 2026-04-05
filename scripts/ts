@@ -1,0 +1,59 @@
+#!/bin/bash
+# ts — tmux session manager
+# Usage:
+#   ts            List sessions + attach interactively
+#   ts studio     Attach to (or create) "Studio" session
+#   ts new NAME   Create a new session
+#   ts kill NAME  Kill a session
+#   ts help       Show this help
+
+set -euo pipefail
+
+TMUX_BIN="${TMUX_BIN:-$(which tmux)}"
+
+case "${1:-}" in
+  ""|ls|list)
+    echo "Active tmux sessions:"
+    echo "─────────────────────"
+    $TMUX_BIN list-sessions -F "  #{?session_attached,*, }  #S  (#{session_windows} windows, created #{t:session_created})" 2>/dev/null || echo "  No sessions running."
+    echo ""
+
+    if [ -n "${TMUX:-}" ]; then
+      echo "You're inside: $(tmux display-message -p '#S')"
+      echo "Switch: Ctrl+A then S (picker) | Ctrl+A then N/P (next/prev)"
+    else
+      echo "Attach: ts <name>"
+    fi
+    ;;
+
+  new)
+    NAME="${2:?Usage: ts new <name>}"
+    if [ -n "${TMUX:-}" ]; then
+      $TMUX_BIN new-session -d -s "$NAME" && $TMUX_BIN switch-client -t "$NAME"
+    else
+      $TMUX_BIN new-session -s "$NAME"
+    fi
+    ;;
+
+  kill)
+    NAME="${2:?Usage: ts kill <name>}"
+    $TMUX_BIN kill-session -t "$NAME" && echo "Killed: $NAME"
+    ;;
+
+  help|-h|--help)
+    head -8 "$0" | tail -6
+    ;;
+
+  *)
+    # Attach or switch to named session
+    NAME="$1"
+    if [ -n "${TMUX:-}" ]; then
+      # Already inside tmux — switch
+      $TMUX_BIN switch-client -t "$NAME" 2>/dev/null || \
+        echo "No session '$NAME'. Run: ts new $NAME"
+    else
+      # Outside tmux — attach (create if doesn't exist)
+      $TMUX_BIN new-session -A -s "$NAME"
+    fi
+    ;;
+esac

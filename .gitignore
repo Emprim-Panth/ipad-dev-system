@@ -1,0 +1,29 @@
+# Secrets — never commit these
+config-templates/telegram-config-live.json
+*.token
+*.secret
+secrets/
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.venv
+venv/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Logs
+*.log
+logs/
+
+# State files
+*.pid
+state/

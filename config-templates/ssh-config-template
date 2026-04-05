@@ -1,0 +1,18 @@
+# ~/.ssh/config — SSH shortcuts for the Studio
+# Replace STUDIO_TAILSCALE_IP with your Studio's actual Tailscale IP
+# Replace YOUR_USERNAME with your macOS username
+
+Host studio
+    HostName STUDIO_TAILSCALE_IP
+    User YOUR_USERNAME
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly yes
+
+# ssh studio-tmux → SSH in + auto-attach to "main" tmux session
+Host studio-tmux
+    HostName STUDIO_TAILSCALE_IP
+    User YOUR_USERNAME
+    IdentityFile ~/.ssh/id_ed25519
+    IdentitiesOnly yes
+    RequestTTY yes
+    RemoteCommand tmux new-session -A -s main
