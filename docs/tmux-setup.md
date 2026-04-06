@@ -74,11 +74,14 @@ All shortcuts use the prefix `Ctrl+A`.
 ### Sessions
 | Action | Keys |
 |--------|------|
-| Session picker | `Ctrl+A` then `S` |
+| **Session picker** | `Ctrl+A` then `s` (lowercase) |
+| **Create new named session** | `Ctrl+A` then `S` (uppercase — prompts for name) |
 | Next session | `Ctrl+A` then `N` |
 | Previous session | `Ctrl+A` then `P` |
 | Detach (leave session running) | `Ctrl+A` then `D` |
 | Detach ALL clients | `Ctrl+A` then `Q` |
+
+> **The `s` / `S` combo is the killer feature.** Lowercase `s` opens a tree-view picker of all sessions — navigate with arrows, enter to switch. Uppercase `S` prompts you to type a name and creates a brand new session. Between these two, you can manage any number of persistent project sessions without leaving tmux.
 
 ### Windows & Panes
 | Action | Keys |

@@ -1,0 +1,27 @@
+{
+  "terminal.integrated.defaultLocation": "editor",
+  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.lineHeight": 1.3,
+  "terminal.integrated.fontFamily": "MesloLGS NF, Menlo, Monaco, monospace",
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.scrollback": 10000,
+  "terminal.integrated.defaultProfile.osx": "zsh",
+
+  "editor.fontSize": 15,
+  "editor.lineHeight": 1.5,
+  "editor.wordWrap": "on",
+  "editor.minimap.enabled": false,
+
+  "workbench.activityBar.location": "top",
+  "workbench.sideBar.location": "left",
+  "breadcrumbs.enabled": false,
+  "workbench.statusBar.visible": true,
+  "workbench.tips.enabled": false,
+  "terminal.integrated.tabs.enabled": true,
+  "editor.folding": false,
+  "workbench.tree.indent": 16,
+
+  "workbench.colorTheme": "Visual Studio Dark",
+  "window.menuBarVisibility": "classic"
+}
